@@ -1,0 +1,61 @@
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Smooth scroll for anchor links */
+a[href^="#"] {
+  transition: all 0.3s ease;
+}
+
+/* Navigation styles */
+header .nav-container {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Common button styles */
+.btn-primary {
+  @apply bg-primary-600 text-white font-medium px-6 py-2 rounded-md transition-colors;
+}
+
+.btn-primary:hover {
+  @apply bg-primary-700;
+}
+
+.btn-secondary {
+  @apply bg-secondary-500 text-white font-medium px-6 py-2 rounded-md transition-colors;
+}
+
+.btn-secondary:hover {
+  @apply bg-secondary-600;
+}
+
+.btn-accent {
+  @apply bg-accent text-white font-medium px-6 py-2 rounded-md transition-colors;
+}
+
+.btn-accent:hover {
+  @apply bg-opacity-90;
+}
+
+/* Section styles */
+section {
+  scroll-margin-top: 80px; /* Account for fixed header */
+}
+
+/* Add styles for responsive images */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Professional white navbar */
+.nav-white {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(230, 230, 230, 0.5);
+} 
