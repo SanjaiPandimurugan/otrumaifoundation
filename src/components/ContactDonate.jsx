@@ -1,4 +1,4 @@
-import qrCode from '../assets/Screenshot 2025-04-30 205220.png';
+import qrCode from '../assets/qrgpay.jpg';
 
 const ContactDonate = () => {
   return (
