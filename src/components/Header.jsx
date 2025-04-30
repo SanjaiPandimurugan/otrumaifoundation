@@ -22,7 +22,7 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-5">
             <a href="#home" className="text-gray-700 text-sm font-medium hover:text-primary-600 transition-colors">Home</a>
             <a href="#about" className="text-gray-700 text-sm font-medium hover:text-primary-600 transition-colors">About Us</a>
-            <a href="#projects" className="text-gray-700 text-sm font-medium hover:text-primary-600 transition-colors">Our Projects</a>
+            <a href="#projects" className="text-gray-700 text-sm font-medium hover:text-primary-600 transition-colors">Events</a>
             <a href="#gallery" className="text-gray-700 text-sm font-medium hover:text-primary-600 transition-colors">Gallery</a>
             <a 
               href="#donate" 
