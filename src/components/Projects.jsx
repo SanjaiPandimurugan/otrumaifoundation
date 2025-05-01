@@ -93,18 +93,62 @@ const Projects = () => {
   }, [activeAccordion]);
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">OUR IMPACTFUL EVENTS</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mt-4 rounded-full"></div>
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900">OUR IMPACTFUL EVENTS</h2>
+          <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mt-3 md:mt-4 rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        {/* Mobile Image - Shown above accordion on small screens */}
+        <div className="md:hidden flex justify-center mb-6">
+          <div className="rounded-xl overflow-hidden shadow-md transition-all duration-300 relative w-full h-64 max-w-xs mx-auto">
+            {activeEvent.images.map((image, index) => (
+              <div 
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <img 
+                  src={image} 
+                  alt={`${activeEvent.title} - Image ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-secondary-500/20 pointer-events-none"></div>
+            
+            {/* Image Navigation Dots */}
+            <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2">
+              {activeEvent.images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex(index);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Event title overlay */}
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/60 to-transparent p-3">
+              <h3 className="text-white font-bold text-base">{activeEvent.title}</h3>
+              <p className="text-white/90 text-xs">{activeEvent.date}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center max-w-6xl mx-auto">
           {/* Events Accordion */}
-          <div className="bg-primary-50 p-6 rounded-2xl shadow-md">
+          <div className="bg-primary-50 p-4 md:p-6 rounded-xl md:rounded-2xl shadow-md">
             {events.map((event) => (
-              <div key={event.id} className="mb-4 border-b border-primary-200 pb-4 last:border-b-0 last:pb-0">
+              <div key={event.id} className="mb-3 md:mb-4 border-b border-primary-200 pb-3 md:pb-4 last:border-b-0 last:pb-0">
                 <button
                   className={`flex justify-between items-center w-full text-left focus:outline-none transition-all duration-300 ${
                     activeAccordion === event.id ? 'bg-primary-100/50 p-2 rounded-lg' : ''
@@ -112,22 +156,22 @@ const Projects = () => {
                   onClick={() => toggleAccordion(event.id)}
                 >
                   <div>
-                    <h3 className={`text-xl font-semibold ${
+                    <h3 className={`text-base md:text-xl font-semibold ${
                       activeAccordion === event.id ? 'text-primary-700' : 'text-primary-600'
                     }`}>{event.title}</h3>
                     {activeAccordion !== event.id && (
-                      <p className="text-primary-500">{event.date}</p>
+                      <p className="text-primary-500 text-sm">{event.date}</p>
                     )}
                   </div>
-                  <span className={`transition-transform duration-300 ${activeAccordion === event.id ? 'rotate-180' : ''}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-secondary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span className={`transition-transform duration-300 flex-shrink-0 ml-2 ${activeAccordion === event.id ? 'rotate-180' : ''}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-secondary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
                 </button>
                 {activeAccordion === event.id && (
-                  <div className="mt-3 text-gray-600 pl-4 border-l-2 border-secondary-300 animate-fadeIn">
-                    <p className="text-primary-500 mb-2">{event.date}</p>
+                  <div className="mt-2 md:mt-3 text-gray-600 pl-3 md:pl-4 border-l-2 border-secondary-300 animate-fadeIn text-sm md:text-base">
+                    <p className="text-primary-500 mb-1 md:mb-2">{event.date}</p>
                     <p>{event.description}</p>
                   </div>
                 )}
@@ -135,8 +179,8 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* Image with automatic rotation - Center aligned container */}
-          <div className="flex justify-center">
+          {/* Desktop Image - Hidden on small screens */}
+          <div className="hidden md:flex justify-center">
             <div className="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl relative w-full h-96 max-w-md mx-auto">
               {activeEvent.images.map((image, index) => (
                 <div 
