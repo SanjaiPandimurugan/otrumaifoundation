@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logo from '../assets/logo.png';
 
 const Testimonials = () => {
   const testimonials = [
@@ -91,8 +92,8 @@ const Testimonials = () => {
                 }`}
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                    <span className="text-white text-lg md:text-2xl font-bold">{testimonial.name.charAt(0)}</span>
+                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-4 md:mb-6 bg-white rounded-full p-2 shadow-md">
+                    <img src={logo} alt="Otrumai Foundation Logo" className="w-full h-full object-contain" />
                   </div>
                   <blockquote className="text-center">
                     <p className="text-sm md:text-lg text-gray-700 mb-4 md:mb-6 italic max-h-[160px] md:max-h-none overflow-y-auto px-2 md:px-0 scrollbar-thin">
