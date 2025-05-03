@@ -1,4 +1,66 @@
+import { useState, useEffect, useRef } from 'react';
+
 const AboutUs = () => {
+  const [animatedStats, setAnimatedStats] = useState({
+    volunteers: 0,
+    chapters: 0,
+    bloodUnits: 0,
+    families: 0
+  });
+  
+  const statsRef = useRef(null);
+  const animationTriggered = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (animationTriggered.current || !statsRef.current) return;
+      
+      const statsElement = statsRef.current;
+      const rect = statsElement.getBoundingClientRect();
+      const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+      if (isVisible) {
+        animationTriggered.current = true;
+        
+        // Target values
+        const targetValues = {
+          volunteers: 500,
+          chapters: 11,
+          bloodUnits: 50,
+          families: 650
+        };
+        
+        // Animation duration in ms
+        const duration = 2000;
+        const fps = 60;
+        const frames = duration / 1000 * fps;
+        
+        let frame = 0;
+        const interval = setInterval(() => {
+          frame++;
+          const progress = frame / frames;
+          
+          setAnimatedStats({
+            volunteers: Math.floor(targetValues.volunteers * progress),
+            chapters: Math.floor(targetValues.chapters * progress),
+            bloodUnits: Math.floor(targetValues.bloodUnits * progress),
+            families: Math.floor(targetValues.families * progress)
+          });
+          
+          if (frame === frames) {
+            clearInterval(interval);
+          }
+        }, 1000 / fps);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Check if element is already visible on initial load
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id="about" className="py-20 bg-primary-50">
       <div className="container mx-auto px-4 md:px-6">
@@ -45,22 +107,30 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-6xl mx-auto">
+        {/* Stats with counting animation */}
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-6xl mx-auto">
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">500+</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+              {animatedStats.volunteers}+
+            </p>
             <p className="text-gray-600 mt-2">Volunteers</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">11</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+              {animatedStats.chapters}
+            </p>
             <p className="text-gray-600 mt-2">Local Chapters</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">50+ Units</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+              {animatedStats.bloodUnits}+ Units
+            </p>
             <p className="text-gray-600 mt-2">Blood Donated</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">650+</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+              {animatedStats.families}+
+            </p>
             <p className="text-gray-600 mt-2">Families Helped</p>
           </div>
         </div>
