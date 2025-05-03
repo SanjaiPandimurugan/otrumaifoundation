@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
-import image1 from '../assets/20250426_104353.jpg';
-import image2 from '../assets/20250426_105949.jpg';
-import image3 from '../assets/20250426_110431.jpg';
-import image4 from '../assets/20250426_112517.jpg';
+import image1 from '../assets/gallery1.jpg';
+import image2 from '../assets/gallery2.jpg';
+import image3 from '../assets/gallery3.jpg';
+import image4 from '../assets/gallery4.jpg';
+import image5 from '../assets/gallery5.jpg';
+import image6 from '../assets/gallery6.jpg';
+import image7 from '../assets/gallery7.jpg';
+import image8 from '../assets/gallery8.jpg';
 
 const Gallery = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -12,75 +16,59 @@ const Gallery = () => {
   const galleryImages = [
     { 
       src: image1, 
-      alt: "Volunteers working with community members",
-      title: "Education Outreach Program",
-      date: "April 26, 2025",
-      description: "Our volunteers conducted educational workshops for underprivileged children, focusing on basic literacy and mathematics skills.",
-      participants: ["Sanjay Kumar", "Priya Sharma", "Arjun Reddy", "Meera Patel"]
+      alt: "World Health Day – Food Distribution Drive ",
+      title: "World Health Day – Food Distribution Drive ",
+      date: "7th April 2024",
+      description: "Everybody can be great, because everybody can serve. Embracing this spirit, Otrumai Foundation marked its first contribution on World Health Day by distributing 100 food packets to those in need around Tambaram. This small act of kindness brought immense joy—not just to the recipients, but to every volunteer who witnessed their smiles and heartfelt blessings. At Otrumai, we believe that no one should go hungry. Our mission is to serve the underserved and spread hope through meaningful action. Together, let's feed the hungry and create a world rooted in empathy and unity." 
     },
     { 
       src: image2, 
       alt: "Distributing supplies to those in need",
-      title: "Medical Supply Distribution",
-      date: "April 26, 2025",
-      description: "Distribution of essential medical supplies to rural communities with limited access to healthcare facilities.",
-      participants: ["Dr. Ravi Mehta", "Aisha Khan", "Vikram Singh", "Leela Nair"]
+      title: "Children’s Home Visit",
+      date: "16th June 2024",
+      description: "As part of our commitment to nurturing young minds, Otrumai Foundation volunteers visited a children’s home, creating a joyful space filled with creativity and encouragement. A variety of engaging activities were organized, allowing the children to express themselves and showcase their unique talents. From art and dance to storytelling and more, each child shone in their own beautiful way. The day was a celebration of individuality, potential, and the joy of being seen and heard. It reminded us that with love, support, and opportunity, every child can thrive and inspire."
     },
     { 
       src: image3, 
-      alt: "Healthcare support services",
-      title: "Community Health Camp",
-      date: "April 26, 2025",
-      description: "Free health check-ups and consultations provided to over 200 individuals in underserved communities.",
-      participants: ["Dr. Sunita Reddy", "Karthik Iyer", "Divya Menon", "Rajiv Bose"]
+      alt: "Old Age Home Visit",
+      title: "Old Age Home Visit",
+      date: "19th August 2024",
+      description: "Otrumai Foundation volunteers visited an old age home, spending quality time with the senior residents through heartfelt conversations and meaningful interaction. As a small gesture of care, we distributed notebooks and pens, encouraging them to write, reflect, or simply engage in creative expression. The visit was a reminder of the wisdom, stories, and warmth our elders hold—and the joy that comes from simply being present with them."
     },
     { 
       src: image4, 
-      alt: "Education programs for children",
-      title: "Art Therapy Workshop",
-      date: "April 26, 2025",
-      description: "Art therapy sessions designed to help children express themselves and develop creative skills.",
-      participants: ["Anita Desai", "Rohan Sharma", "Neha Gupta", "Vishal Malhotra"]
+      alt: "Blanket & Clothes ",
+      title: "Blanket & Clothes Donation Drive – Spreading Warmth During Crisis 2024",
+      date: "27th October 2024",
+      description: "In times of hardship, even the smallest act of kindness can bring immense comfort. During a recent crisis, Otrumai Foundation volunteers came together in solidarity to support individuals living without shelter. Understanding the urgent need, we distributed blankets and clothes nearly 50+ blankets and cloths to help them stay warm and protected. This drive was not just about material aid—it was about restoring dignity, offering hope, and standing with those who are often overlooked. Through compassion and collective effort, we aimed to bring a little warmth to those facing the coldest nights. Together, we serve. Together, we care."
     },
     { 
-      src: image1, 
+      src: image5, 
       alt: "Community outreach programs",
-      title: "Community Awareness Drive",
-      date: "April 26, 2025",
-      description: "Awareness campaign addressing local environmental issues and sustainable practices.",
-      participants: ["Mohan Krishnan", "Leela Nair", "Suresh Patel", "Ananya Mehta"]
+      title: "Food Donation Drive ",
+      date: "3rd November 2024",
+      description: "In a world where many still struggle to afford even a single meal, Otrumai Foundation took a heartfelt step toward change. With the vision to combat poverty and hunger, our dedicated volunteers distributed nutritious food to those who cannot afford three meals a day. This initiative wasn’t just about feeding the hungry—it was a call to action, a reminder that no one deserves to go to bed hungry. Every meal served carried a message of hope, dignity, and solidarity. At Otrumai, we believe in a future where basic needs aren’t a privilege but a right. Let’s stand together to feed lives and fight hunger."
     },
     { 
-      src: image2, 
-      alt: "Food distribution event",
-      title: "Food Relief Program",
-      date: "April 26, 2025",
-      description: "Distribution of food packages to families affected by economic hardship.",
-      participants: ["Kiran Sharma", "Aditi Roy", "Raj Kumar", "Fathima Begum"]
+      src: image6, 
+      alt: "Christmas Celebration Drive",
+      title: "Christmas Celebration Drive",
+      date: "25th December 2024)", 
+      description: "Otrumai Foundation embraced the spirit of Christmas by celebrating the festival of joy with the public, turning the day into a beautiful memory of shared happiness and unity. Volunteers came together to distribute chocolates, small gifts, and festive cheer, lighting up faces young and old alike. The celebration ended with a joyful cake-cutting ceremony that brought everyone closer in the warmth of the season. This initiative was more than a celebration—it was about spreading love, kindness, and a sense of belonging to those who need it most. Because joy grows when shared—and Christmas is the perfect time to give from the heart."
     },
     { 
-      src: image3, 
-      alt: "Medical camp",
-      title: "Vision Care Initiative",
-      date: "April 26, 2025", 
-      description: "Free eye examinations and distribution of prescription glasses to school children.",
-      participants: ["Dr. Anil Kapoor", "Sameera Khan", "Vihaan Mehta", "Deepika Nair"]
+      src: image7, 
+      alt: "Beach Cleaning Drive – A Step Toward a Greener Tomorrow ",
+      title: "Beach Cleaning Drive – A Step Toward a Greener Tomorrow",
+      date: " 2nd April 2025",
+      description: "Career counseling and skill development workshop for high school students.Volunteers from Otrumai Foundation joined hands to clean the beach, removing waste and restoring its natural beauty. This drive aimed to raise awareness about pollution and its impact on marine life. The event reflected our commitment to sustainability and community-driven environmental care. Each act of cleanup was a step toward a healthier, greener planet. Let’s protect our earth—because change begins with us. "
     },
     { 
-      src: image4, 
-      alt: "Educational workshop",
-      title: "Career Guidance Seminar",
-      date: "April 26, 2025",
-      description: "Career counseling and skill development workshop for high school students.",
-      participants: ["Prof. Srinivas Rao", "Jaya Lakshmi", "Rahul Kapoor", "Maya Iyer"]
-    },
-    { 
-      src: image1, 
-      alt: "Volunteer training session",
-      title: "Volunteer Training Workshop",
-      date: "April 26, 2025",
-      description: "Training session to prepare new volunteers for community service projects.",
-      participants: ["Amit Verma", "Sarita Pillai", "Naveen Kumar", "Divya Sharma"]
+      src: image8, 
+      alt: "Children’s Home Visit Drive ",
+      title: "Children’s Home Visit Drive ",
+      date: "27th April 2025",
+      description: "Otrumai Foundation recently visited a children’s home, where we organized a series of fun and creative activities to encourage self-expression and build confidence. The children took part in a dance competition, showcasing their energy and creativity. Additionally, many expressed their talents through writing stories, drawing beautiful artworks, and participating in other activities. At Otrumai, we believe in empowering children and fostering an environment where they can grow, create, and dream. Together, we nurture hope and creativity in the next generation."
     }
   ];
 
@@ -187,18 +175,6 @@ const Gallery = () => {
             {/* Content */}
             <div className="p-4 md:p-6">
               <p className="text-gray-700 mb-4 md:mb-5 text-sm md:text-base">{selectedEvent.description}</p>
-              
-              <h3 className="font-bold text-primary-600 mb-2 text-sm md:text-base">Participants</h3>
-              <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3">
-                {selectedEvent.participants.map((participant, idx) => (
-                  <span 
-                    key={idx} 
-                    className="bg-primary-100 text-primary-700 text-xs md:text-sm px-2 md:px-3 py-1 rounded-full"
-                  >
-                    {participant}
-                  </span>
-                ))}
-              </div>
             </div>
             
             {/* Footer */}

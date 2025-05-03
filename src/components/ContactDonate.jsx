@@ -1,4 +1,4 @@
-import qrCode from '../assets/qrgpay.jpg';
+import qrCode from '../assets/scanqr.jpg';
 
 const ContactDonate = () => {
   return (
@@ -46,7 +46,7 @@ const ContactDonate = () => {
               </div>
               
               <button className="w-full bg-gradient-to-r from-accent to-secondary-500 text-white px-4 md:px-5 py-2 rounded-md hover:shadow-md transition-all font-medium text-xs md:text-sm">
-                Volunteer Now
+               <a href="https://docs.google.com/forms/d/e/1FAIpQLSdtdzluVTXEBBOvoK-1jyz-3h7eaZLDrsvVxMpD6RjxBy3qpA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer"> Volunteer Now</a>
               </button>
             </div>
           </div>

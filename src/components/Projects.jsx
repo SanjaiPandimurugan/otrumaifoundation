@@ -45,7 +45,7 @@ const Projects = () => {
       date: 'April 7th 2024',
       description: 'As part of our commitment to community welfare, volunteers from Otrumai Foundation organized food donation drives across multiple locations. Nutritious meals were distributed to residents of old age homes and underserved communities, spreading compassion and support to those in need. The initiative reflected our mission to serve with empathy and build a more caring society.',
       images: [eventImage3, eventImage4],
-      aspectRatio: 'landscape'
+      aspectRatio: 'portrait'
     },
     {
       id: 'accordion5',
@@ -53,7 +53,7 @@ const Projects = () => {
       date: 'April 12th 2025',
       description: 'Volunteers from the Otrumai Foundation organized a series of educational events where they showcased their innovative projects and talents. These events featured hands-on demonstrations and insightful presentations across various fields, including technology, sustainability, and social impact. Volunteers shared their expertise, inspiring attendees with practical knowledge and real-world applications. The initiative reflected our commitment to fostering creativity, collaboration, and knowledge-sharing within the community.',
       images: [eventImage5, eventImage6],
-      aspectRatio: 'landscape'
+      aspectRatio: 'portrait'
     },
     {
       id: 'accordion6',

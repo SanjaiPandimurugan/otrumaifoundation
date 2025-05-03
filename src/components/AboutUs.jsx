@@ -56,12 +56,12 @@ const AboutUs = () => {
             <p className="text-gray-600 mt-2">Local Chapters</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">650+</p>
-            <p className="text-gray-600 mt-2">Families Helped</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">500+ Units</p>
+            <p className="text-gray-600 mt-2">Blood Donated</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">200</p>
-            <p className="text-gray-600 mt-2">Overseas Volunteers</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">650+</p>
+            <p className="text-gray-600 mt-2">Families Helped</p>
           </div>
         </div>
       </div>

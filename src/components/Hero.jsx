@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import heroImage1 from '../assets/20250426_104353.jpg';
-import heroImage2 from '../assets/20250426_105949.jpg';
-import heroImage3 from '../assets/20250426_110431.jpg';
-import qrCode from '../assets/qrgpay.jpg';
+import heroImage1 from '../assets/hero1.jpg';
+import heroImage2 from '../assets/hero2.jpg';
+import heroImage3 from '../assets/hero3.jpg';
+import qrCode from '../assets/scanqr.jpg';
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
