@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
-import eventImage1 from '../assets/20250426_104353.jpg';
-import eventImage2 from '../assets/20250426_105949.jpg';
-import eventImage3 from '../assets/20250426_110431.jpg';
-import eventImage4 from '../assets/20250426_112517.jpg';
+import eventImage1 from '../assets/periodpride.jpg';
+import eventImage2 from '../assets/cworkshop.jpg';
+import eventImage3 from '../assets/volunteer1.jpg';
+import eventImage4 from '../assets/volunteer2.jpg';
+import eventImage5 from '../assets/education1.jpg';
+import eventImage6 from '../assets/education2.jpg';
+import eventImage7 from '../assets/environment1.jpg';
+import eventImage8 from '../assets/environment2.jpg';
+import pythonWorkshop from '../assets/workshop.jpg';
 
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState('accordion1');
@@ -12,38 +17,51 @@ const Projects = () => {
   const events = [
     {
       id: 'accordion1',
-      title: 'Eminence 1.0 Collaboration',
-      date: 'November 2023',
-      description: 'A major collaboration with educational institutions to provide scholarships and mentoring to underprivileged students.',
-      images: [eventImage1, eventImage4],
+      title: 'Period Pride – Awareness Session',
+      date: 'April 18th 2024',
+      description: 'An educational initiative focused on menstrual health and hygiene, featuring expert insights and open conversations. The session aimed to break taboos, spread awareness, and empower participants with knowledge about menstrual cycles, common myths, and when to seek help.',
+      images: [eventImage1],
+      aspectRatio: 'portrait' // Special flag for portrait-oriented images like flyers
     },
     {
       id: 'accordion2',
-      title: 'World Bone and Joint Health Day',
-      date: 'October 2023',
-      description: 'In collaboration with The Aayul Foundation and Tambaram Medical Centre, a rally and health camp were organized to raise awareness about bone and joint health.',
-      images: [eventImage2, eventImage3],
+      title: 'Python Programming Workshop',
+      date: 'May 11th 2025',
+      description: 'An online workshop focused on Python programming fundamentals. Conducted by Pradhosh KM, this workshop provides hands-on learning experience in Python programming. Designed for beginners, the session covers essential concepts and practical applications in a supportive environment.',
+      images: [pythonWorkshop],
+      aspectRatio: 'poster' // For poster-style images
     },
     {
       id: 'accordion3',
-      title: 'Social Internship Programme',
-      date: 'September 2023',
-      description: 'A 3-month program engaging college students in community service and social development projects.',
-      images: [eventImage3, eventImage1],
+      title: 'Skill-Building Workshop – C Language',
+      date: 'April 26th 2025',
+      description: 'An interactive online workshop designed to introduce participants to the fundamentals of the C programming language. Led by keynote speaker Kavyadharshini S M, the session aimed to unlock the magic of C—where coding truly begins—offering practical knowledge to beginners at no cost',
+      images: [eventImage2],
+      aspectRatio: 'portrait'
     },
     {
       id: 'accordion4',
-      title: 'Children\'s Art & Creative Workshop',
-      date: 'August 2023',
-      description: 'A week-long creative workshop for children from marginalized communities, focusing on artistic expression, storytelling, and building confidence through creative activities.',
-      images: [eventImage4, eventImage2],
+      title: 'Volunteer Drive – Food Donation Campaign',
+      date: 'April 7th 2024',
+      description: 'As part of our commitment to community welfare, volunteers from Otrumai Foundation organized food donation drives across multiple locations. Nutritious meals were distributed to residents of old age homes and underserved communities, spreading compassion and support to those in need. The initiative reflected our mission to serve with empathy and build a more caring society.',
+      images: [eventImage3, eventImage4],
+      aspectRatio: 'landscape'
     },
     {
       id: 'accordion5',
-      title: 'Rural Health Initiative',
-      date: 'July 2023',
-      description: 'Mobile healthcare clinics that visited five remote villages, providing basic health screenings, vaccinations, and health education to over 500 residents with limited access to medical services.',
-      images: [eventImage1, eventImage3],
+      title: 'Educational Events – Volunteer Project Showcase',
+      date: 'April 12th 2025',
+      description: 'Volunteers from the Otrumai Foundation organized a series of educational events where they showcased their innovative projects and talents. These events featured hands-on demonstrations and insightful presentations across various fields, including technology, sustainability, and social impact. Volunteers shared their expertise, inspiring attendees with practical knowledge and real-world applications. The initiative reflected our commitment to fostering creativity, collaboration, and knowledge-sharing within the community.',
+      images: [eventImage5, eventImage6],
+      aspectRatio: 'landscape'
+    },
+    {
+      id: 'accordion6',
+      title: 'Environmental Initiative – Beach Cleaning Drive',
+      date: 'April 2nd 2025',
+      description: 'Volunteers from Otrumai Foundation took part in a beach cleaning drive to promote a cleaner and healthier environment. The effort highlighted our commitment to sustainability and community-driven ecological care. Through such actions, we continue to advocate for sustainable living and environmental stewardship.',
+      images: [eventImage7, eventImage8],
+      aspectRatio: 'portrait'
     },
   ];
 
@@ -92,6 +110,36 @@ const Projects = () => {
     setCurrentImageIndex(0);
   }, [activeAccordion]);
 
+  // Get image styling based on the aspect ratio
+  const getImageContainerStyle = (isMobile = false) => {
+    const { aspectRatio } = activeEvent;
+    
+    if (aspectRatio === 'portrait') {
+      return isMobile 
+        ? 'w-full max-w-[300px] h-auto aspect-[3/4]' 
+        : 'w-full max-w-md h-auto aspect-[3/4]';
+    } else if (aspectRatio === 'poster') {
+      return isMobile 
+        ? 'w-full max-w-[300px] h-auto aspect-[3/4]'
+        : 'w-full max-w-md h-auto aspect-[3/4]';
+    } else {
+      return isMobile 
+        ? 'w-full h-64 max-w-xs' 
+        : 'w-full h-96 max-w-md';
+    }
+  };
+
+  // Determine if the image needs a special display treatment
+  const isSpecialImage = activeEvent.aspectRatio === 'portrait' || activeEvent.aspectRatio === 'poster';
+
+  // Get proper CSS class for image content fitting
+  const getImageFitClass = () => {
+    if (isSpecialImage) {
+      return 'object-contain bg-white';
+    }
+    return 'object-cover';
+  };
+
   return (
     <section id="projects" className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
@@ -102,7 +150,7 @@ const Projects = () => {
 
         {/* Mobile Image - Shown above accordion on small screens */}
         <div className="md:hidden flex justify-center mb-6">
-          <div className="rounded-xl overflow-hidden shadow-md transition-all duration-300 relative w-full h-64 max-w-xs mx-auto">
+          <div className={`rounded-xl overflow-hidden shadow-md transition-all duration-300 relative ${getImageContainerStyle(true)} mx-auto`}>
             {activeEvent.images.map((image, index) => (
               <div 
                 key={index}
@@ -113,34 +161,40 @@ const Projects = () => {
                 <img 
                   src={image} 
                   alt={`${activeEvent.title} - Image ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${getImageFitClass()}`}
                 />
+                
+                {/* Title and date overlay for all images */}
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/60 to-transparent p-3 text-left">
+                  <h3 className="text-white font-bold text-base">{activeEvent.title}</h3>
+                  <p className="text-white/90 text-xs">{activeEvent.date}</p>
+                </div>
               </div>
             ))}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-secondary-500/20 pointer-events-none"></div>
             
-            {/* Image Navigation Dots */}
-            <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2">
-              {activeEvent.images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentImageIndex(index);
-                  }}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                  }`}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Event title overlay */}
-            <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/60 to-transparent p-3">
-              <h3 className="text-white font-bold text-base">{activeEvent.title}</h3>
-              <p className="text-white/90 text-xs">{activeEvent.date}</p>
-            </div>
+            {/* Only show content overlay for non-special images */}
+            {!isSpecialImage && (
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/10 to-secondary-500/10 pointer-events-none"></div>
+            )}
+            
+            {/* Image Navigation Dots - Only show if there are multiple images */}
+            {activeEvent.images.length > 1 && (
+              <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2">
+                {activeEvent.images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(index);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -181,7 +235,7 @@ const Projects = () => {
 
           {/* Desktop Image - Hidden on small screens */}
           <div className="hidden md:flex justify-center">
-            <div className="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl relative w-full h-96 max-w-md mx-auto">
+            <div className={`rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl relative ${getImageContainerStyle(false)} mx-auto`}>
               {activeEvent.images.map((image, index) => (
                 <div 
                   key={index}
@@ -192,34 +246,40 @@ const Projects = () => {
                   <img 
                     src={image} 
                     alt={`${activeEvent.title} - Image ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full ${getImageFitClass()}`}
                   />
+                  
+                  {/* Title and date overlay for all images */}
+                  <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/60 to-transparent p-4 text-left">
+                    <h3 className="text-white font-bold text-lg">{activeEvent.title}</h3>
+                    <p className="text-white/90 text-sm">{activeEvent.date}</p>
+                  </div>
                 </div>
               ))}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-secondary-500/20 pointer-events-none"></div>
               
-              {/* Image Navigation Dots */}
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-                {activeEvent.images.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setCurrentImageIndex(index);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                    }`}
-                    aria-label={`Go to image ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              {/* Event title overlay */}
-              <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/60 to-transparent p-4">
-                <h3 className="text-white font-bold text-lg">{activeEvent.title}</h3>
-                <p className="text-white/90 text-sm">{activeEvent.date}</p>
-              </div>
+              {/* Only show content overlay for non-special images */}
+              {!isSpecialImage && (
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/10 to-secondary-500/10 pointer-events-none"></div>
+              )}
+              
+              {/* Image Navigation Dots - Only show if there are multiple images */}
+              {activeEvent.images.length > 1 && (
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                  {activeEvent.images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentImageIndex(index);
+                      }}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

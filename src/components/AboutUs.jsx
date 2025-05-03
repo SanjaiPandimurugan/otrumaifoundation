@@ -23,8 +23,7 @@ const AboutUs = () => {
               <h3 className="text-2xl font-bold text-primary-600 mb-4">OUR VISION</h3>
             </div>
             <p className="text-gray-700 leading-relaxed text-center">
-              To create a compassionate and inclusive society where every individual, especially the
-              vulnerable and marginalized, lives with dignity, security, and purpose.
+            Our vision is to create a united platform where service and knowledge go hand in hand. We aim to uplift lives through consistent social contributions and inclusive education, ensuring that no one is left behind in the journey toward a better tomorrow.
             </p>
           </div>
 
@@ -39,10 +38,9 @@ const AboutUs = () => {
               <h3 className="text-2xl font-bold text-secondary-500 mb-4">OUR MISSION</h3>
             </div>
             <p className="text-gray-700 leading-relaxed text-center">
-              To empower communities and transform lives by providing holistic support and sustainable
-              solutions in areas such as elder care, education, healthcare, and social welfare. Through
-              strategic partnerships, innovative initiatives, and a dedicated network of volunteers, we strive
-              to make a lasting impact on society and foster a culture of empathy and solidarity.
+            We dedicate ourselves to empowering communities by offering 
+            meaningful social service initiatives and accessible learning opportunities. 
+            Through continuous engagement in volunteer-driven efforts and collaborative knowledge-sharing, we strive to foster a spirit of service, inspire positive change, spread joy, and contribute to the creation of a more inclusive and sustainable future for all.
             </p>
           </div>
         </div>
@@ -50,7 +48,7 @@ const AboutUs = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-6xl mx-auto">
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">1500</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">500+</p>
             <p className="text-gray-600 mt-2">Volunteers</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
@@ -58,7 +56,7 @@ const AboutUs = () => {
             <p className="text-gray-600 mt-2">Local Chapters</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">
-            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">12500</p>
+            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">650+</p>
             <p className="text-gray-600 mt-2">Families Helped</p>
           </div>
           <div className="text-center bg-white p-6 rounded-xl shadow-md">

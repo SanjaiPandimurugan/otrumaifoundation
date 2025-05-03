@@ -4,22 +4,22 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Divya Ravi",
+      name: "khaveya",
       text: "The Otrumai Foundation stands out as one of the most dedicated and compassionate organizations I've come across. Being a part of this mission has been an incredibly rewarding experience. Hats off to the entire team for the amazing work they do, and I'm eager to see what more they'll achieve in the future."
     },
     {
       id: 2,
-      name: "Santhosh Kumar",
+      name: "Swetha",
       text: "I've volunteered with many organizations, but none compare to the genuine impact Otrumai Foundation creates. Their approach to community development is holistic and sustainable. The team works tirelessly to ensure every project makes a meaningful difference in people's lives."
     },
     {
       id: 3,
-      name: "Priya Makhija",
+      name: "Padamavathi",
       text: "As a donor to Otrumai Foundation for the past two years, I'm consistently impressed by their transparency and the tangible results they achieve. Every rupee donated is used efficiently to create maximum impact. Their regular updates keep me connected to the cause."
     },
     {
       id: 4,
-      name: "Rajesh Sharma",
+      name: "Krithik ",
       text: "The healthcare camp organized by Otrumai Foundation in our village was life-changing for many families. Not only did they provide medical care, but they also educated us about preventive healthcare measures. Their commitment to community wellbeing is remarkable."
     }
   ];

@@ -8,12 +8,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-            <div className="flex items-center mb-8 md:mb-0">
-              <img src={logo} alt="Otrumai Foundation" className="h-14 mr-4" />
-              <div>
-                <h3 className="text-2xl font-bold uppercase">Otrumai Foundation</h3>
-                <p className="text-sm text-white/80">Making a difference, one smile at a time.</p>
-              </div>
+            <div className="mb-8 md:mb-0 text-center md:text-left">
+              <h3 className="text-2xl font-bold uppercase">Otrumai Foundation</h3>
+              <p className="text-sm text-white/80 mt-2">Making a difference, one smile at a time.</p>
             </div>
             
             <div className="flex flex-col items-center md:items-end">
