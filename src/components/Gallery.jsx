@@ -24,9 +24,9 @@ const Gallery = () => {
     { 
       src: image2, 
       alt: "Distributing supplies to those in need",
-      title: "Children’s Home Visit",
+      title: "Children's Home Visit",
       date: "16th June 2024",
-      description: "As part of our commitment to nurturing young minds, Otrumai Foundation volunteers visited a children’s home, creating a joyful space filled with creativity and encouragement. A variety of engaging activities were organized, allowing the children to express themselves and showcase their unique talents. From art and dance to storytelling and more, each child shone in their own beautiful way. The day was a celebration of individuality, potential, and the joy of being seen and heard. It reminded us that with love, support, and opportunity, every child can thrive and inspire."
+      description: "As part of our commitment to nurturing young minds, Otrumai Foundation volunteers visited a children's home, creating a joyful space filled with creativity and encouragement. A variety of engaging activities were organized, allowing the children to express themselves and showcase their unique talents. From art and dance to storytelling and more, each child shone in their own beautiful way. The day was a celebration of individuality, potential, and the joy of being seen and heard. It reminded us that with love, support, and opportunity, every child can thrive and inspire."
     },
     { 
       src: image3, 
@@ -47,7 +47,7 @@ const Gallery = () => {
       alt: "Community outreach programs",
       title: "Food Donation Drive ",
       date: "3rd November 2024",
-      description: "In a world where many still struggle to afford even a single meal, Otrumai Foundation took a heartfelt step toward change. With the vision to combat poverty and hunger, our dedicated volunteers distributed nutritious food to those who cannot afford three meals a day. This initiative wasn’t just about feeding the hungry—it was a call to action, a reminder that no one deserves to go to bed hungry. Every meal served carried a message of hope, dignity, and solidarity. At Otrumai, we believe in a future where basic needs aren’t a privilege but a right. Let’s stand together to feed lives and fight hunger."
+      description: "In a world where many still struggle to afford even a single meal, Otrumai Foundation took a heartfelt step toward change. With the vision to combat poverty and hunger, our dedicated volunteers distributed nutritious food to those who cannot afford three meals a day. This initiative wasn't just about feeding the hungry—it was a call to action, a reminder that no one deserves to go to bed hungry. Every meal served carried a message of hope, dignity, and solidarity. At Otrumai, we believe in a future where basic needs aren't a privilege but a right. Let's stand together to feed lives and fight hunger."
     },
     { 
       src: image6, 
@@ -61,14 +61,14 @@ const Gallery = () => {
       alt: "Beach Cleaning Drive – A Step Toward a Greener Tomorrow ",
       title: "Beach Cleaning Drive – A Step Toward a Greener Tomorrow",
       date: " 2nd April 2025",
-      description: "Career counseling and skill development workshop for high school students.Volunteers from Otrumai Foundation joined hands to clean the beach, removing waste and restoring its natural beauty. This drive aimed to raise awareness about pollution and its impact on marine life. The event reflected our commitment to sustainability and community-driven environmental care. Each act of cleanup was a step toward a healthier, greener planet. Let’s protect our earth—because change begins with us. "
+      description: "Career counseling and skill development workshop for high school students.Volunteers from Otrumai Foundation joined hands to clean the beach, removing waste and restoring its natural beauty. This drive aimed to raise awareness about pollution and its impact on marine life. The event reflected our commitment to sustainability and community-driven environmental care. Each act of cleanup was a step toward a healthier, greener planet. Let's protect our earth—because change begins with us. "
     },
     { 
       src: image8, 
-      alt: "Children’s Home Visit Drive ",
-      title: "Children’s Home Visit Drive ",
+      alt: "Children's Home Visit Drive ",
+      title: "Children's Home Visit Drive ",
       date: "27th April 2025",
-      description: "Otrumai Foundation recently visited a children’s home, where we organized a series of fun and creative activities to encourage self-expression and build confidence. The children took part in a dance competition, showcasing their energy and creativity. Additionally, many expressed their talents through writing stories, drawing beautiful artworks, and participating in other activities. At Otrumai, we believe in empowering children and fostering an environment where they can grow, create, and dream. Together, we nurture hope and creativity in the next generation."
+      description: "Otrumai Foundation recently visited a children's home, where we organized a series of fun and creative activities to encourage self-expression and build confidence. The children took part in a dance competition, showcasing their energy and creativity. Additionally, many expressed their talents through writing stories, drawing beautiful artworks, and participating in other activities. At Otrumai, we believe in empowering children and fostering an environment where they can grow, create, and dream. Together, we nurture hope and creativity in the next generation."
     }
   ];
 
@@ -106,7 +106,7 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-7xl mx-auto">
           {galleryImages.map((image, index) => (
             <div 
               key={index} 
@@ -116,7 +116,7 @@ const Gallery = () => {
               <img 
                 src={image.src} 
                 alt={image.alt} 
-                className="w-full h-48 md:h-64 object-cover"
+                className="w-full h-56 md:h-72 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary-600/90 to-secondary-500/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                 <div className="p-3 md:p-4 w-full">
@@ -147,15 +147,15 @@ const Gallery = () => {
           onClick={closeEventDetails}
         >
           <div 
-            className="bg-white rounded-lg shadow-xl w-full max-w-xs md:max-w-2xl overflow-hidden my-4"
+            className="bg-white rounded-lg shadow-xl w-full max-w-sm md:max-w-3xl overflow-hidden my-4"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
+            {/* Header with larger image */}
             <div className="relative">
               <img 
                 src={selectedEvent.src} 
                 alt={selectedEvent.alt} 
-                className="w-full h-48 md:h-64 object-cover"
+                className="w-full h-56 md:h-80 object-contain bg-gray-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 md:p-6">
                 <h2 className="text-white text-xl md:text-2xl font-bold">{selectedEvent.title}</h2>

@@ -16,7 +16,7 @@ const ContactDonate = () => {
               alt="Join our mission" 
               className="w-full h-auto object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-600/80 to-transparent flex items-end justify-center">
+            <div className="absolute inset-0 bg-gradient-to-t to-transparent flex items-end justify-center">
               <div className="p-4 md:p-6 text-center w-full"> 
               </div>
             </div>
