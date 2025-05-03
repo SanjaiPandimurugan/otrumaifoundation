@@ -88,36 +88,49 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Donate Overlay */}
+      {/* Donate Overlay - styled like the image */}
       {showDonateOverlay && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={toggleDonateOverlay}>
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-xs w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-lg font-bold text-secondary-600">DONATE NOW</h3>
-              <button 
-                onClick={toggleDonateOverlay}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-xs w-full relative" onClick={(e) => e.stopPropagation()}>
+            {/* Close button with X symbol in the corner */}
+            <button 
+              onClick={toggleDonateOverlay}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              aria-label="Close donation popup"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+            
+            {/* Heading */}
+            <h3 className="text-xl font-bold text-primary-600 mb-4 text-center">DONATE NOW</h3>
+            
+            {/* QR Code in a light mint green background */}
+            <div className="bg-green-50 p-5 rounded-lg mb-4">
+              <img 
+                src={qrCode} 
+                alt="Donation QR Code" 
+                className="w-36 h-36 object-contain mx-auto"
+              />
+            </div>
+            
+            {/* Text below QR code */}
+            <p className="text-center text-gray-700 text-sm mb-3">Scan to donate via Google Pay</p>
+            
+            {/* Payment method icons */}
+            <div className="flex justify-center space-x-4 mb-4">
+              <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
+              <img src="https://cdn-icons-png.flaticon.com/512/888/888870.png" alt="Google Pay" className="h-5" />
+              <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI" className="h-5" />
+            </div>
+
+            {/* Direct GPay Payment Button */}
+            <a href="upi://pay?pa=pavithra1958b@okhdfcbank&pn=pavithra%20P&cu=INR" className="block w-full">
+              <button className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all">
+                Pay with GPay
               </button>
-            </div>
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-primary-100 to-secondary-100 p-4 rounded-lg mb-3 shadow-inner">
-                <img 
-                  src={qrCode} 
-                  alt="Donation QR Code" 
-                  className="w-32 h-32 object-contain mx-auto"
-                />
-              </div>
-              <p className="text-center text-gray-700 text-sm mb-2">Scan to donate via Google Pay</p>
-              <div className="flex space-x-4 justify-center mb-3">
-                <img src="https://cdn-icons-png.flaticon.com/512/888/888870.png" alt="Google Pay" className="h-5" />
-                <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
-                <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI" className="h-5" />
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       )}
