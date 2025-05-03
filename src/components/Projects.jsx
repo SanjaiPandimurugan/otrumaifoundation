@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import eventImage1 from '../assets/periodpride.jpg';
-import eventImage2 from '../assets/cworkshop.jpg';
+import eventImage2 from '../assets/skill1.jpg';
 import eventImage3 from '../assets/volunteer1.jpg';
 import eventImage4 from '../assets/volunteer2.jpg';
 import eventImage5 from '../assets/education1.jpg';
 import eventImage6 from '../assets/education2.jpg';
 import eventImage7 from '../assets/environment1.jpg';
 import eventImage8 from '../assets/environment2.jpg';
-import pythonWorkshop from '../assets/workshop.jpg';
+import eventImage9 from '../assets/skill2.jpg';
+import pythonWorkshop from '../assets/clanguageworkshop.jpg';
 
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState('accordion1');
@@ -15,6 +16,14 @@ const Projects = () => {
   const [autoRotate, setAutoRotate] = useState(true);
 
   const events = [
+    {
+      id: 'accordion4',
+      title: 'Volunteer Drive – Food Donation Campaign',
+      date: 'April 7th 2024',
+      description: 'As part of our commitment to community welfare, volunteers from Otrumai Foundation organized food donation drives across multiple locations. Nutritious meals were distributed to residents of old age homes and underserved communities, spreading compassion and support to those in need. The initiative reflected our mission to serve with empathy and build a more caring society.',
+      images: [eventImage3, eventImage4],
+      aspectRatio: 'portrait'
+    },
     {
       id: 'accordion1',
       title: 'Period Pride – Awareness Session',
@@ -24,27 +33,11 @@ const Projects = () => {
       aspectRatio: 'portrait' // Special flag for portrait-oriented images like flyers
     },
     {
-      id: 'accordion2',
-      title: 'Python Programming Workshop',
-      date: 'May 11th 2025',
-      description: 'An online workshop focused on Python programming fundamentals. Conducted by Pradhosh KM, this workshop provides hands-on learning experience in Python programming. Designed for beginners, the session covers essential concepts and practical applications in a supportive environment.',
-      images: [pythonWorkshop],
-      aspectRatio: 'poster' // For poster-style images
-    },
-    {
-      id: 'accordion3',
-      title: 'Skill-Building Workshop – C Language',
-      date: 'April 26th 2025',
-      description: 'An interactive online workshop designed to introduce participants to the fundamentals of the C programming language. Led by keynote speaker Kavyadharshini S M, the session aimed to unlock the magic of C—where coding truly begins—offering practical knowledge to beginners at no cost',
-      images: [eventImage2],
-      aspectRatio: 'portrait'
-    },
-    {
-      id: 'accordion4',
-      title: 'Volunteer Drive – Food Donation Campaign',
-      date: 'April 7th 2024',
-      description: 'As part of our commitment to community welfare, volunteers from Otrumai Foundation organized food donation drives across multiple locations. Nutritious meals were distributed to residents of old age homes and underserved communities, spreading compassion and support to those in need. The initiative reflected our mission to serve with empathy and build a more caring society.',
-      images: [eventImage3, eventImage4],
+      id: 'accordion6',
+      title: 'Environmental Initiative – Beach Cleaning Drive',
+      date: 'April 2nd 2025',
+      description: 'Volunteers from Otrumai Foundation took part in a beach cleaning drive to promote a cleaner and healthier environment. The effort highlighted our commitment to sustainability and community-driven ecological care. Through such actions, we continue to advocate for sustainable living and environmental stewardship.',
+      images: [eventImage7, eventImage8],
       aspectRatio: 'portrait'
     },
     {
@@ -56,11 +49,19 @@ const Projects = () => {
       aspectRatio: 'portrait'
     },
     {
-      id: 'accordion6',
-      title: 'Environmental Initiative – Beach Cleaning Drive',
-      date: 'April 2nd 2025',
-      description: 'Volunteers from Otrumai Foundation took part in a beach cleaning drive to promote a cleaner and healthier environment. The effort highlighted our commitment to sustainability and community-driven ecological care. Through such actions, we continue to advocate for sustainable living and environmental stewardship.',
-      images: [eventImage7, eventImage8],
+      id: 'accordion2',
+      title: 'C Programming Workshop',
+      date: 'April 26th 2025',
+      description: 'An interactive online workshop designed to introduce participants to the fundamentals of the C programming language. Led by keynote speaker Kavyadharshini S M, the session aimed to unlock the magic of C—where coding truly begins—offering practical knowledge to beginners at no cost',
+      images: [pythonWorkshop],
+      aspectRatio: 'poster' // For poster-style images
+    },
+    {
+      id: 'accordion3',
+      title: 'A Skill-Building Day at Orphanage',
+      date: 'April 27th 2025',
+      description: 'A vibrant skill-development workshop brought smiles through drawing, dancing, and fun-filled activities. Children showcased their talents with joy as volunteers joined in to create lasting memories of togetherness. It was a heart-touching day of creativity, bonding, and pure happiness.',
+      images: [eventImage2, eventImage9],
       aspectRatio: 'portrait'
     },
   ];
