@@ -22,7 +22,7 @@ const Gallery = () => {
       description: "Everybody can be great, because everybody can serve. Embracing this spirit, Otrumai Foundation marked its first contribution on World Health Day by distributing 100 food packets to those in need around Tambaram. This small act of kindness brought immense joy—not just to the recipients, but to every volunteer who witnessed their smiles and heartfelt blessings. At Otrumai, we believe that no one should go hungry. Our mission is to serve the underserved and spread hope through meaningful action. Together, let's feed the hungry and create a world rooted in empathy and unity." 
     },
     { 
-      src: image2, 
+      src: image5, 
       alt: "Distributing supplies to those in need",
       title: "Children's Home Visit",
       date: "16th June 2024",
@@ -43,7 +43,7 @@ const Gallery = () => {
       description: "In times of hardship, even the smallest act of kindness can bring immense comfort. During a recent crisis, Otrumai Foundation volunteers came together in solidarity to support individuals living without shelter. Understanding the urgent need, we distributed blankets and clothes nearly 50+ blankets and cloths to help them stay warm and protected. This drive was not just about material aid—it was about restoring dignity, offering hope, and standing with those who are often overlooked. Through compassion and collective effort, we aimed to bring a little warmth to those facing the coldest nights. Together, we serve. Together, we care."
     },
     { 
-      src: image5, 
+      src: image2, 
       alt: "Community outreach programs",
       title: "Food Donation Drive ",
       date: "3rd November 2024",

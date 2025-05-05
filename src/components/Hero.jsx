@@ -54,9 +54,9 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 md:px-6 h-full flex flex-col justify-center items-center text-center">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            IGNITING HOPE,<br />
-            BUILDING<br />
-            TOMORROW
+          SERVING SMILES,<br />
+          BUILDING <br />
+          DREAMS
           </h1>
           <p className="text-lg md:text-xl mb-8 text-white">
             Otrumai Foundation is dedicated to empowering marginalized communities 

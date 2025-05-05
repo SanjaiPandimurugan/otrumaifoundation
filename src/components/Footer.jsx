@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
             <div className="mb-8 md:mb-0 text-center md:text-left">
               <h3 className="text-2xl font-bold uppercase">Otrumai Foundation</h3>
-              <p className="text-sm text-white/80 mt-2">Making a difference, one smile at a time.</p>
+              <p className="text-sm text-white/80 mt-2">Together, We Build. Together, We Serve</p>
             </div>
             
             <div className="flex flex-col items-center md:items-end">
