@@ -126,7 +126,7 @@ const Hero = () => {
             </div>
 
             {/* Direct GPay Payment Button */}
-            <a href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Gokulmurugan%20P&cu=INR" className="block w-full">
+            <a href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&am=100&cu=INR&tn=Donation" className="block w-full">
               <button className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all">
                 Pay with GPay
               </button>
