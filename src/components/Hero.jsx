@@ -126,10 +126,18 @@ const Hero = () => {
             </div>
 
             {/* Direct GPay Payment Button */}
-            <a href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation" className="block w-full">
-              <button className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all">
-                Pay with GPay
-              </button>
+            <a 
+              href="upi://pay?pa=gokulpreethi19bodi@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation" 
+              className="block w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all"
+              onClick={(e) => {
+                // For mobile devices that might not support UPI deep links
+                if (!navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
+                  e.preventDefault();
+                  alert("Please use a mobile device with UPI apps installed to make a payment");
+                }
+              }}
+            >
+              Pay with GPay
             </a>
           </div>
         </div>
