@@ -107,11 +107,11 @@ const Hero = () => {
             <h3 className="text-xl font-bold text-primary-600 mb-4 text-center">DONATE NOW</h3>
             
             {/* QR Code in a light mint green background */}
-            <div className="bg-green-50 p-5 rounded-lg mb-4">
+            <div className="bg-green-50 p-5 rounded-lg mb-4 flex justify-center">
               <img 
                 src={qrCode} 
                 alt="Donation QR Code" 
-                className="w-36 h-36 object-contain mx-auto"
+                className="w-36 h-36 object-contain"
               />
             </div>
             
@@ -122,100 +122,24 @@ const Hero = () => {
             <div className="flex justify-center space-x-4 mb-4">
               <img src="https://cdn-icons-png.flaticon.com/512/888/888870.png" alt="Google Pay" className="h-5" />
               <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
-              <img src="https://cdn-icons-png.flaticon.com/512/270/270799.png" alt="PhonePe" className="h-5" />
-            </div>
-            
-            {/* Donation Amount Input */}
-            <div className="mb-4">
-              <label htmlFor="donationAmount" className="block text-gray-700 text-sm font-medium mb-2 text-center">
-                Enter Donation Amount (₹)
-              </label>
-              <input
-                type="number"
-                id="donationAmount"
-                min="1"
-                placeholder="100"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-center"
-              />
+              <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI" className="h-5" />
             </div>
 
-            {/* Google Pay Payment Button */}
-            <button 
-              onClick={() => {
-                // Get user entered amount or default to 100
-                const amountInput = document.getElementById('donationAmount');
-                const amount = amountInput && amountInput.value ? amountInput.value : "100";
-                
-                // Create supported payment method
-                const supportedInstruments = [
-                  {
-                    supportedMethods: ["https://tez.google.com/pay"],
-                    data: {
-                      pa: "pavithra1958b@okhdfcbank",
-                      pn: "Otrumai Foundation",
-                      tr: Date.now().toString(), // Unique transaction reference
-                      url: "https://efinepay.com", // Replace with your website
-                      mc: "4722", 
-                      tn: "Donation to Otrumai Foundation",
-                      am: amount // Use user's entered amount
-                    }
-                  }
-                ];
-                
-                // Create order details with user's amount
-                const details = {
-                  total: {
-                    label: "Total",
-                    amount: {
-                      currency: "INR",
-                      value: amount
-                    }
-                  },
-                  displayItems: [
-                    {
-                      label: "Donation Amount",
-                      amount: {
-                        currency: "INR",
-                        value: amount
-                      }
-                    }
-                  ]
-                };
-                
-                // Check if Payment Request API is available
-                if (window.PaymentRequest) {
-                  try {
-                    const request = new PaymentRequest(supportedInstruments, details);
-                    
-                    request.show()
-                      .then(paymentResponse => {
-                        // Handle successful payment
-                        paymentResponse.complete('success')
-                          .then(() => {
-                            alert(`Thank you for your donation of ₹${amount}!`);
-                          });
-                      })
-                      .catch(error => {
-                        // Handle payment request errors - fallback to UPI
-                        console.error(error);
-                        const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am=${amount}`;
-                        window.location.href = upiUrl;
-                      });
-                  } catch (err) {
-                    // Fallback if Payment Request creation fails
-                    const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am=${amount}`;
-                    window.location.href = upiUrl;
-                  }
-                } else {
-                  // Fallback for browsers that don't support Payment Request API
-                  const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am=${amount}`;
-                  window.location.href = upiUrl;
+            {/* Direct GPay Payment Button */}
+            <a 
+              href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumaifoundation&am=1&cu=INR" 
+              className="block w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
+              onClick={(e) => {
+                // Check if device supports UPI deep links
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if (!isMobile) {
+                  e.preventDefault();
+                  alert("Please scan the QR code with your mobile UPI app to donate");
                 }
               }}
-              className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-3 rounded-lg font-medium text-sm hover:shadow-lg transition-all"
             >
-              Proceed to Payment
-            </button>
+              Pay with UPI
+            </a>
           </div>
         </div>
       )}
