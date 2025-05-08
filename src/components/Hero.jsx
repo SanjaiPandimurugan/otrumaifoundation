@@ -125,30 +125,78 @@ const Hero = () => {
               <img src="https://cdn-icons-png.flaticon.com/512/270/270799.png" alt="PhonePe" className="h-5" />
             </div>
 
-            {/* Reliable UPI payment button */}
+            {/* Google Pay Payment Button */}
             <button 
               onClick={() => {
-                const upiId = "pavithra1958b@okhdfcbank";
-                const name = "Otrumai Foundation";
-                const note = "Donation";
+                // Create supported payment method similar to the image
+                const supportedInstruments = [
+                  {
+                    supportedMethods: ["https://tez.google.com/pay"],
+                    data: {
+                      pa: "pavithra1958b@okhdfcbank",
+                      pn: "Otrumai Foundation",
+                      tr: Date.now().toString(), // Unique transaction reference
+                      url: "https://efinepay.com", // Replace with your actual website
+                      mc: "4722", // Your merchant category code
+                      tn: "Donation to Otrumai Foundation"
+                    }
+                  }
+                ];
                 
-                // Create a universal UPI link that works across apps
-                const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&tn=${encodeURIComponent(note)}&cu=INR`;
+                // Create order details
+                const details = {
+                  total: {
+                    label: "Total",
+                    amount: {
+                      currency: "INR",
+                      value: "100.00" // Default amount, can be changed
+                    }
+                  },
+                  displayItems: [
+                    {
+                      label: "Donation Amount",
+                      amount: {
+                        currency: "INR",
+                        value: "100.00"
+                      }
+                    }
+                  ]
+                };
                 
-                // Detect if mobile device
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                
-                if (isMobile) {
-                  window.location.href = upiUrl;
+                // Check if Payment Request API is available
+                if (window.PaymentRequest) {
+                  try {
+                    const request = new PaymentRequest(supportedInstruments, details);
+                    
+                    request.show()
+                      .then(paymentResponse => {
+                        // Handle successful payment
+                        paymentResponse.complete('success')
+                          .then(() => {
+                            alert("Thank you for your donation!");
+                          });
+                      })
+                      .catch(error => {
+                        // Handle payment request errors - fallback to UPI
+                        console.error(error);
+                        const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation`;
+                        window.location.href = upiUrl;
+                      });
+                  } catch (err) {
+                    // Fallback if Payment Request creation fails
+                    const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation`;
+                    window.location.href = upiUrl;
+                  }
                 } else {
-                  // For desktop users
-                  alert("Please scan the QR code using your UPI app to make a payment");
+                  // Fallback for browsers that don't support Payment Request API
+                  const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation`;
+                  window.location.href = upiUrl;
                 }
               }}
               className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-3 rounded-lg font-medium text-sm hover:shadow-lg transition-all"
             >
-              Pay with UPI
-            </button>
+              Pay with Google Pay
+              </button>
           </div>
         </div>
       )}
