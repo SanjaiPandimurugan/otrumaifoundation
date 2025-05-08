@@ -118,19 +118,32 @@ const Hero = () => {
             {/* Text below QR code */}
             <p className="text-center text-gray-700 text-sm mb-3">Scan to donate via Google Pay</p>
             
-            {/* Payment method icons */}
-            <div className="flex justify-center space-x-4 mb-4">
-              <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
-              <img src="https://cdn-icons-png.flaticon.com/512/888/888870.png" alt="Google Pay" className="h-5" />
-              <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI" className="h-5" />
+            {/* Multiple UPI Payment Options */}
+            <div className="w-full space-y-2">
+              {/* Google Pay */}
+              <a 
+                href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am="
+                className="block w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
+              >
+                Pay with Google Pay
+              </a>
+              
+              {/* PhonePe */}
+              <a 
+                href="phonepe://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation"
+                className="block w-full bg-gradient-to-r from-secondary-500 to-primary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
+              >
+                Pay with PhonePe
+              </a>
+              
+              {/* PayTM */}
+              <a 
+                href="paytmmp://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation"
+                className="block w-full bg-white border border-primary-500 text-primary-600 px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
+              >
+                Pay with PayTM
+              </a>
             </div>
-
-            {/* Direct GPay Payment Button */}
-            <a href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation" className="block w-full">
-              <button className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all">
-                Pay with GPay
-              </button>
-            </a>
           </div>
         </div>
       )}
