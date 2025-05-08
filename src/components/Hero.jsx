@@ -124,11 +124,29 @@ const Hero = () => {
               <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
               <img src="https://cdn-icons-png.flaticon.com/512/270/270799.png" alt="PhonePe" className="h-5" />
             </div>
+            
+            {/* Donation Amount Input */}
+            <div className="mb-4">
+              <label htmlFor="donationAmount" className="block text-gray-700 text-sm font-medium mb-2 text-center">
+                Enter Donation Amount (₹)
+              </label>
+              <input
+                type="number"
+                id="donationAmount"
+                min="1"
+                placeholder="100"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-center"
+              />
+            </div>
 
             {/* Google Pay Payment Button */}
             <button 
               onClick={() => {
-                // Create supported payment method similar to the image
+                // Get user entered amount or default to 100
+                const amountInput = document.getElementById('donationAmount');
+                const amount = amountInput && amountInput.value ? amountInput.value : "100";
+                
+                // Create supported payment method
                 const supportedInstruments = [
                   {
                     supportedMethods: ["https://tez.google.com/pay"],
@@ -136,20 +154,21 @@ const Hero = () => {
                       pa: "pavithra1958b@okhdfcbank",
                       pn: "Otrumai Foundation",
                       tr: Date.now().toString(), // Unique transaction reference
-                      url: "https://efinepay.com", // Replace with your actual website
-                      mc: "4722", // Your merchant category code
-                      tn: "Donation to Otrumai Foundation"
+                      url: "https://efinepay.com", // Replace with your website
+                      mc: "4722", 
+                      tn: "Donation to Otrumai Foundation",
+                      am: amount // Use user's entered amount
                     }
                   }
                 ];
                 
-                // Create order details
+                // Create order details with user's amount
                 const details = {
                   total: {
                     label: "Total",
                     amount: {
                       currency: "INR",
-                      value: "100.00" // Default amount, can be changed
+                      value: amount
                     }
                   },
                   displayItems: [
@@ -157,7 +176,7 @@ const Hero = () => {
                       label: "Donation Amount",
                       amount: {
                         currency: "INR",
-                        value: "100.00"
+                        value: amount
                       }
                     }
                   ]
@@ -173,30 +192,30 @@ const Hero = () => {
                         // Handle successful payment
                         paymentResponse.complete('success')
                           .then(() => {
-                            alert("Thank you for your donation!");
+                            alert(`Thank you for your donation of ₹${amount}!`);
                           });
                       })
                       .catch(error => {
                         // Handle payment request errors - fallback to UPI
                         console.error(error);
-                        const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation`;
+                        const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am=${amount}`;
                         window.location.href = upiUrl;
                       });
                   } catch (err) {
                     // Fallback if Payment Request creation fails
-                    const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation`;
+                    const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am=${amount}`;
                     window.location.href = upiUrl;
                   }
                 } else {
                   // Fallback for browsers that don't support Payment Request API
-                  const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation`;
+                  const upiUrl = `upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am=${amount}`;
                   window.location.href = upiUrl;
                 }
               }}
               className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-3 rounded-lg font-medium text-sm hover:shadow-lg transition-all"
             >
-              Pay with Google Pay
-              </button>
+              Proceed to Payment
+            </button>
           </div>
         </div>
       )}
