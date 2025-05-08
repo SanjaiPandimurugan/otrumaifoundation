@@ -118,32 +118,46 @@ const Hero = () => {
             {/* Text below QR code */}
             <p className="text-center text-gray-700 text-sm mb-3">Scan to donate via Google Pay</p>
             
-            {/* Multiple UPI Payment Options */}
-            <div className="w-full space-y-2">
-              {/* Google Pay */}
-              <a 
-                href="upi://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation&am="
-                className="block w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
-              >
-                Pay with Google Pay
-              </a>
-              
-              {/* PhonePe */}
-              <a 
-                href="phonepe://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation"
-                className="block w-full bg-gradient-to-r from-secondary-500 to-primary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
-              >
-                Pay with PhonePe
-              </a>
-              
-              {/* PayTM */}
-              <a 
-                href="paytmmp://pay?pa=gokulpreethi19bodi-1@oksbi&pn=Otrumai%20Foundation&cu=INR&tn=Donation"
-                className="block w-full bg-white border border-primary-500 text-primary-600 px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
-              >
-                Pay with PayTM
-              </a>
+            {/* Payment method icons */}
+            <div className="flex justify-center space-x-4 mb-4">
+              <img src="https://cdn-icons-png.flaticon.com/512/888/888870.png" alt="Google Pay" className="h-5" />
+              <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
+              <img src="https://cdn-icons-png.flaticon.com/512/270/270799.png" alt="PhonePe" className="h-5" />
             </div>
+
+            {/* Reliable UPI Intent button */}
+            <button 
+              onClick={() => {
+                const upiId = "gokulpreethi19bodi-1@oksbi";
+                const name = "Otrumai Foundation";
+                const note = "Donation";
+                
+                // Create different links for different devices
+                const androidIntent = `intent://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&tn=${encodeURIComponent(note)}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end`;
+                const iosUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&tn=${encodeURIComponent(note)}&cu=INR`;
+                const fallbackUrl = `https://pay.google.com/gp/v/u/0/home/activity?upi=${upiId}`;
+                
+                // Detect device and open appropriate link
+                const isAndroid = /android/i.test(navigator.userAgent);
+                const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+                
+                if (isAndroid) {
+                  window.location.href = androidIntent;
+                } else if (isIOS) {
+                  window.location.href = iosUpiUrl;
+                  // Fallback for iOS after delay
+                  setTimeout(() => {
+                    window.location.href = fallbackUrl;
+                  }, 2000);
+                } else {
+                  // For desktop - show alert
+                  alert("Please scan the QR code using your UPI app to make a payment");
+                }
+              }}
+              className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-3 rounded-lg font-medium text-sm hover:shadow-lg transition-all"
+            >
+              Donate Now
+            </button>
           </div>
         </div>
       )}
