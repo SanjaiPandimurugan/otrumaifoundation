@@ -120,17 +120,35 @@ const Hero = () => {
             
             {/* Payment method icons */}
             <div className="flex justify-center space-x-4 mb-4">
-              <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
               <img src="https://cdn-icons-png.flaticon.com/512/888/888870.png" alt="Google Pay" className="h-5" />
-              <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI" className="h-5" />
+              <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="PayTM" className="h-5" />
+              <img src="https://cdn-icons-png.flaticon.com/512/270/270799.png" alt="PhonePe" className="h-5" />
             </div>
 
-            {/* Direct GPay Payment Button */}
-            <a href="upi://pay?pa=pavithra1958b@okhdfcbank&pn=Otrumai%20Foundation&cu=INR&tn=Donation" className="block w-full">
-              <button className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all">
-                Pay with GPay
-              </button>
-            </a>
+            {/* Reliable UPI payment button */}
+            <button 
+              onClick={() => {
+                const upiId = "pavithra1958b@okhdfcbank";
+                const name = "Otrumai Foundation";
+                const note = "Donation";
+                
+                // Create a universal UPI link that works across apps
+                const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&tn=${encodeURIComponent(note)}&cu=INR`;
+                
+                // Detect if mobile device
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                  window.location.href = upiUrl;
+                } else {
+                  // For desktop users
+                  alert("Please scan the QR code using your UPI app to make a payment");
+                }
+              }}
+              className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-3 rounded-lg font-medium text-sm hover:shadow-lg transition-all"
+            >
+              Pay with UPI
+            </button>
           </div>
         </div>
       )}
