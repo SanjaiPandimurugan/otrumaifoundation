@@ -127,7 +127,8 @@ const Hero = () => {
 
             {/* Direct GPay Payment Button */}
             <a 
-              href="upi://pay?pn=Vikas%20Kumar&pa=gokulpreethi19bodi-1@oksbi&cu=INR" 
+              href= "tez://upi/pay?pa=gokulpreethi19bodi-1@oksbi&pn=MerchantName&am=100.00&cu=INR" 
+              
               
               className="block w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-md transition-all text-center"
               onClick={(e) => {
